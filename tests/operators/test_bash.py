@@ -161,6 +161,7 @@ class TestBashOperator(unittest.TestCase):
         with TemporaryDirectory(prefix='test_command_with_cwd') as test_cwd_folder:
             # Test everything went alright
             result = BashOperator(task_id='abc', bash_command=test_cmd, cwd=test_cwd_folder).execute({})
+            print("This works")
             assert result == "xxxx"
             with open(f'{test_cwd_folder}/outputs.txt') as tmp_file:
                 assert tmp_file.read().splitlines()[0] == "xxxx"
